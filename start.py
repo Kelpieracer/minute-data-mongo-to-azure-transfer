@@ -1,6 +1,9 @@
+# Reads minute stock data from Yahoo and uploads it to Azure table storage
+# (c) 2020 Kelpieracer
+
 import os
 from azure.cosmosdb.table.tableservice import TableService
-from upsert_batch import upsert_week_of_minutedata
+from upsert_batch import insert_or_replace_week_of_minutedata
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -13,5 +16,6 @@ table_client = TableService(
 
 tickers = ['MES=F', 'M2K=F', '^OMXH25', 'MNQ=F', '^OMXHGI', '^GDAXI',
            'NOKIA.HE', 'OUT1V.HE', 'NESTE.HE', 'FORTUM.HE', '^OMXS30GI', 'TYRES.HE']
+
 for ticker in tickers:
-    upsert_week_of_minutedata(table_client, table_name, ticker)
+    insert_or_replace_week_of_minutedata(table_client, table_name, ticker)

@@ -1,7 +1,6 @@
 import yfinance as yf
 
 
-def ReadStocks(ticker, endDate):
-    data = yf.download(ticker, end=endDate, period='5d',
-                       interval='1m', group_by="ticker")
+def read_week_of_minutedata_from_yahoo(ticker):
+    data = yf.download(ticker, interval='1m', period='7d', group_by="ticker")
     return data

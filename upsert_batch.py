@@ -7,7 +7,7 @@ def is_batch_full(count):
     return (count) % 100 == 0
 
 
-def upsert_week_of_minutedata(table_client, table_name, ticker):
+def insert_or_replace_week_of_minutedata(table_client, table_name, ticker):
     time.sleep(2)
     print(ticker)
     MinuteItems = read_week_of_minutedata_from_yahoo(ticker)
